@@ -1142,7 +1142,7 @@ class TemplatePower extends TemplatePower304 {
 			}
 
 		}
-		if (!$CFG->tpl_pas_trad_auto)
+		if (!isset($CFG->tpl_pas_trad_auto) || !$CFG->tpl_pas_trad_auto)
 			return traduction($varname);
 		else
 			return null;
@@ -1575,7 +1575,7 @@ class C2ITemplate extends TemplatePower {
 				print_bouton_retour($this, $url_retour, $ou, "bouton_retour");
 
 			} else {
-				if ($CFG->boutons_retour_fermer_haut)
+				if (isset($CFG->boutons_retour_fermer_haut) && $CFG->boutons_retour_fermer_haut)
 					$this->newBlock("fermer");
 				$this->newblock("retour_bas");
 				print_bouton_fermer($this, "bouton_retour");

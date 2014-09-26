@@ -182,7 +182,7 @@ $tpl->setChecked (true,"checked");
 
 for ($i=1; $i <=15; $i++) {
 	if ($i==6) continue; //synchro referentiel d�ja affich�
-	if ($i==3 && ! $CFG->utiliser_notions_parcours) continue;  //cette PF n'utilise pas les notions
+	if ($i==3 && (isset($CFG->utiliser_notions_parcours) && !$CFG->utiliser_notions_parcours)) continue;  //cette PF n'utilise pas les notions
 	if (est_traduite("sync_$i")) {
 		$tpl->newBlock("option");
 		$tpl->assign ("num",$i);
