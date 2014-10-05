@@ -1001,7 +1001,7 @@ function c2i_http_request($config, $quiet=false,$id_objet='') {
         }
         if (!$quiet) {
             // log_warn('Curl error: ' . $result->errno . ': ' . $result->error);
-            espion3('erreur', 'curl', 'synchro nationale',$id_objet, $result);
+            // espion3('erreur', 'curl', 'synchro nationale',$id_objet, $result);
         }
     }
 

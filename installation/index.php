@@ -19,7 +19,7 @@ require_once($chemin_commun."/weblib.php");
 require_once ($chemin_commun."/fonctions_session.php");
 require_once ($chemin_commun."/fonctions_divers.php");
 require_once ($chemin_commun."/lib_langues.php");
-
+require_once ($chemin_commun."/lib_tracking.php");
 
 
 $serveur_bdd=optional_param("serveur_bdd","",PARAM_RAW);
