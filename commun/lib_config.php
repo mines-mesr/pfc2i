@@ -57,7 +57,11 @@ $pu=parse_url($CFG->wwwroot);
 
 
 $CFG->encodage="UTF-8";
-$CFG->prefix=$prefix;  // attention la table c2iconfig DOIT avoir ce prefixe !
+if (isset($prefix)) {
+	$CFG->prefix=$prefix;  // attention la table c2iconfig DOIT avoir ce prefixe !
+}else{
+	$CFG->prefix='';
+}
 
 $version=return_version_pf(true);  //lecture fichier version.txt
 
@@ -266,7 +270,7 @@ function config_en_menu () {
      $icon         = 'folder.gif';
     $expandedIcon = 'folder-expanded.gif';
 
-    $menu  = &new HTML_TreeMenu();
+    $menu = new HTML_TreeMenu();
 
     $sql =<<<EOS
     select distinct categorie from {$CFG->prefix}config order by categorie
@@ -274,7 +278,7 @@ EOS;
     $cats=get_records_sql($sql);
     foreach ($cats as $cat) {
 
-        $noderef   = &new HTML_TreeNode(array('text' => "<b>".clean($cat->categorie)."</b>",
+        $noderef = new HTML_TreeNode(array('text' => "<b>".clean($cat->categorie)."</b>",
             'icon' => $icon, 'expandedIcon' => $expandedIcon,
             'expanded' => true));
         $menu->addItem($noderef);
@@ -320,7 +324,7 @@ EOS;
 
 
 EOH;
-            $nodealin   = &new HTML_TreeNode(array('text' => clean ($html,999),
+            $nodealin   = new HTML_TreeNode(array('text' => clean ($html,999),
                 'icon' => 'document2.png',  'expanded' => true));
             $noderef->addItem($nodealin);
         }

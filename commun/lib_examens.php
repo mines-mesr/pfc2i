@@ -41,8 +41,9 @@
 //rev 980 tirages de questions déplacés dans ce script
  require_once($CFG->chemin_commun."/lib_tirages.php");
 
-if ($USER->type_plateforme=='certification' || $CFG->pool_en_positionnement)
+if ($USER->type_plateforme=='certification' || (isset($CFG->pool_en_positionnement) && $CFG->pool_en_positionnement)) {
     require_once($CFG->chemin_commun."/lib_pool.php");
+}
 
  if (is_admin()) {   //utilisateur courant uniquement
     maj_bd_examens();

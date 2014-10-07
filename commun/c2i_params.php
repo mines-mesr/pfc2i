@@ -215,10 +215,11 @@ if (!empty( $USER->id_user)) {
 
 // il faut le faire apr�s la lecture des droits
 //print $CFG->universite_serveur;
-if ($CFG->universite_serveur==1)
+if (isset($CFG->universite_serveur) && $CFG->universite_serveur == 1) {
     $file=$CFG->chemin."/codes/nationale/config.php";
-else
+} else {
     $file=$CFG->chemin."/codes/locale/config.php";
+}
 //print $file;
 if (file_exists($file))
     require_once($file);
@@ -235,9 +236,10 @@ require_once ($chemin_commun."/lib_events.php"); //apr�s la lecture des droits
 //voir pour les charger � la demande
 //rev 984 attention sur une nationale . Les web services proposent les notions
 //meme si desactiv� sur cette nationale
-if ($CFG->utiliser_notions_parcours || $CFG->universite_serveur==1)
+if ((isset($CFG->utiliser_notions_parcours) && $CFG->utiliser_notions_parcours) || (isset($CFG->universite_serveur) && $CFG->universite_serveur == 1)) {
   //require_once ($chemin_commun."/lib_notions.php");
   require_once ($chemin_commun."/lib_ressources.php");
+}
 
 //print_r(get_notions());
 //invalide_question(2489,1);
